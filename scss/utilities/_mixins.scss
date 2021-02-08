@@ -1,0 +1,11 @@
+@mixin sizes ( $ancho, $alto) {
+    width: $ancho;
+    height: $alto;
+}
+
+@mixin centrarHijos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}

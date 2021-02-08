@@ -1,0 +1,16 @@
+@import 'utilities/variables';
+
+@import 'base/base';
+
+
+
+@import 'utilities/mixins';
+
+@import 'base/generalidades';
+
+//loyout
+@import 'layout/header';
+@import 'layout/encabezado';
+
+//views
+@import 'views/sucursales'
