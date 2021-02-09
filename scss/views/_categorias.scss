@@ -49,5 +49,28 @@
 
     }
 }
-@media only screen and (min-width:$tablet){}
-@media only screen and (min-width:$desktop){}
+@media only screen and (min-width:$tablet){
+    .categorias {
+       
+        .categorias__box {
+            grid-template-columns: auto auto;
+
+        }
+        
+
+
+    }
+}
+@media only screen and (min-width:$desktop){
+
+    .categorias {
+       
+        .categorias__box {
+            grid-template-columns: auto auto auto;
+
+        }
+        
+
+
+    }
+}
