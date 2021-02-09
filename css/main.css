@@ -121,3 +121,40 @@ body {
     .cuerpo .cuerpo__box .card {
       width: 100%;
       height: 200px; } }
+
+@media only screen and (min-width: 320px) {
+  .categorias {
+    width: 100%;
+    position: relative;
+    top: -60px; }
+    .categorias::before {
+      content: ' ';
+      display: block;
+      width: 100%;
+      height: 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-color: #dd0734;
+      position: sticky;
+      top: 115px; }
+    .categorias .categorias__box {
+      display: grid;
+      grid-template: auto fill / auto;
+      gap: 15px; }
+      .categorias .categorias__box .categorias__contenido {
+        width: 100%;
+        height: 110px;
+        background-color: black;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        /*background-image: url(../../imagenes/categorias/gohan.png);
+                background-size: cover;*/ }
+        .categorias .categorias__box .categorias__contenido p {
+          font-size: 23px;
+          color: white;
+          font-weight: bold; } }
