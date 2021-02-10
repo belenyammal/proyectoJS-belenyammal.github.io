@@ -7,21 +7,26 @@ function validarIsNro (nro){
     return nro
 }
 
-function seleccionarMenu () {
-    //comente el while porque me genera un ciclo infinito y no entiendo porque
-    //while ( (opc < 1) || (opc > 5)) {  
-        opc = parseInt(prompt('Seleccione una de las opciones del menu: \n 0-Lomito completo \n 1-Gohan \n 2-Gaseosa (500ml) \n 3-Pizza especial \n \n 5-FINALIZAR COMPRA'))
-        opc = validarIsNro(opc) 
-    //}
-    return opc
-}
+
+function seleccionarMenu() {
+    opc = parseInt(prompt("Seleccione una de las opciones del menu: \n 0-Lomito completo \n 1-Gohan \n 2-Gaseosa (500ml) \n 3-Pizza especial \n \n 4-FINALIZAR COMPRA"));
+    while (opc < 0 || opc > 4) {
+      opc = parseInt(prompt("Seleccione una de las opciones del menu: \n 0-Lomito completo \n 1-Gohan \n 2-Gaseosa (500ml) \n 3-Pizza especial \n \n 4-FINALIZAR COMPRA"));
+      opc = validarIsNro(opc);
+    }
+    return opc;
+  }
 
 //const confirmacion = () => parseInt(prompt(`Esta seguro que desea agregar este articulo al carrito? \n Ingrese \n 1(si desea agregarlo)\n 2(volver al menu) `))
 
-const confirmacion = function ( ){
-    res = parseInt(prompt(`Esta seguro que desea agregar este articulo al carrito? \n Ingrese \n 1(si desea agregarlo)\n 2(volver al menu) `))
-    return res
-}
+const confirmacion = function () {
+    res = parseInt(prompt(`Esta seguro que desea agregar este articulo al carrito? \n Ingrese \n 1(si desea agregarlo)\n 2(volver al menu) `));
+    while (res < 1 || res > 2) {
+      res = parseInt(prompt(`Esta seguro que desea agregar este articulo al carrito? \n Ingrese \n 1(si desea agregarlo)\n 2(volver al menu) `));
+      res = validarIsNro(res);
+    }
+    return res;
+  };
 
 class Producto {
     constructor  ( nombre, precio ) {
@@ -48,7 +53,8 @@ class Pedido {
 
     mostrarPedido( ) {
         console.log('Los productos agregados al carrito fueron:')
-        for ( const producto of this.carrito) {
+        carritoOrd = this.carrito.precio.sort( (a,b) => { a - b }) //no me funciona tira error
+        for ( const producto of this.carritoOrd) {
             console.log(`nombre: ${producto.nombre}, precio: $${producto.precio}`)
         }
         let total = this.calcularTotal()
@@ -94,24 +100,28 @@ const pedido = new Pedido(1, [ ])
 
 
 //ejecucion del programa principal
-let opc = -1
-function main () {
-    while (opc != 5){
+let opc = -1;
+menu.mostrarMenu();
 
-        menu.mostrarMenu()
-        opc = seleccionarMenu()
-        if ( opc != 5) {
-            res = confirmacion()
-        }
-        
-        if ( res == 1 ) {
-            // no entiendo porque no me funciona esto
-            //console.log(menu.productos[opc]) si esto me esta devolviendo el objeto correcto
-            pedido.addProducto(menu.productos[opc])//si ingreso por ejemplo el objeto lomito aca si funciona
-        }
-    }
-    pedido.mostrarPedido()
+function main() {
+    
+  while (opc != 4) {
+    
+    opc = seleccionarMenu();
+    if (opc != 4) {
+      res = confirmacion();
+      if (res == 1) {
+        pedido.addProducto(menu.productos[opc]); 
+      }
+    } 
 
+  }
+
+  if (pedido.carrito.length != 0) {
+    pedido.mostrarPedido();
+  } else {
+    console.log("No se selecciono ningun producto");
+  }
 }
 
 main()
