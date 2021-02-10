@@ -53,8 +53,8 @@ class Pedido {
 
     mostrarPedido( ) {
         console.log('Los productos agregados al carrito fueron:')
-        carritoOrd = this.carrito.precio.sort( (a,b) => { a - b }) //no me funciona tira error
-        for ( const producto of this.carritoOrd) {
+        //carritoOrd = this.carrito.precio.sort( (a,b) => { a - b }) //no me funciona tira error
+        for ( const producto of this.carrito) {
             console.log(`nombre: ${producto.nombre}, precio: $${producto.precio}`)
         }
         let total = this.calcularTotal()
@@ -96,8 +96,10 @@ menu.addProducto(pizza)
 
 
 //inicio un pedido
-const pedido = new Pedido(1, [ ])
+let idPedido = parseInt(prompt("ingrese el numero de pedido"))
+idPedido = validarIsNro(idPedido)
 
+const pedido = new Pedido(idPedido, [ ])
 
 //ejecucion del programa principal
 let opc = -1;
@@ -114,20 +116,23 @@ function main() {
         pedido.addProducto(menu.productos[opc]); 
       }
     } 
-
   }
+
 
   if (pedido.carrito.length != 0) {
     pedido.mostrarPedido();
   } else {
     console.log("No se selecciono ningun producto");
   }
+
+  enJason = JSON.stringify(pedido.carrito)
+  localStorage.setItem(`pedido numero: ${pedido.id}`, enJason)
+
+  resHis = parseInt(prompt('quiere ver su historial de pedidos? \n Ingrese \n 1(si desea verlo)\n 2(cancelar)'))
+  if (resHis == 1) {
+      
+  }
+
 }
 
 main()
-/*
-console.log(menu.productos[0])
-pedido.addProducto(menu.productos[0])
-pedido.addProducto(menu.productos[2])
-pedido.mostrarPedido()
-*/
