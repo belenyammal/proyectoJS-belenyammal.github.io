@@ -121,17 +121,58 @@ function main() {
 
   if (pedido.carrito.length != 0) {
     pedido.mostrarPedido();
+
+    //DESARROLLO DE LOCAL STORAGE
+    if (localStorage.getItem("pedidos") != null) {
+    
+      //obtengo el array de pedidos del local storage
+      
+      let almacenados = JSON.parse(localStorage.getItem("pedidos"))
+      
+      //itero el array de pedidos y creo a cada objeto de tipo pedido para poder acceder a ellos
+      let pedidos = [ ]
+      for (const pedido of almacenados) {
+        pedidos.push(new Pedido(pedido.id, pedido.carrito))  
+      }
+      console.log(pedidos)
+  
+      //agrego al array el objeto pedido de esta sesion
+      pedidos.push(pedido)
+  
+      //guardo en el local el array con un pedido nuevo
+      pedidosJson = JSON.stringify(pedidos)
+      localStorage.setItem(`pedidos`, pedidosJson)
+  
+      
+      resHis = parseInt(prompt('quiere ver su historial de pedidos? \n Ingrese \n 1(si desea verlo)\n 2(cancelar)'))
+      if (resHis == 1) {
+        console.log("\n HISTORIAL DE PEDIDOS:")
+        for (const pedido of pedidos) {
+  
+            console.log(`\n pedido numero: ${pedido.id} \n`)
+  
+            pedido.mostrarPedido(pedido)
+        }
+      }
+     
+  
+    }else {
+        let pedidos = [ ]
+        pedidos.push(pedido)
+  
+        pedidosJson = JSON.stringify(pedidos)
+  
+        localStorage.setItem(`pedidos`, pedidosJson)
+  
+        
+    }    
+    
   } else {
     console.log("No se selecciono ningun producto");
   }
 
-  enJason = JSON.stringify(pedido.carrito)
-  localStorage.setItem(`pedido numero: ${pedido.id}`, enJason)
+   
 
-  resHis = parseInt(prompt('quiere ver su historial de pedidos? \n Ingrese \n 1(si desea verlo)\n 2(cancelar)'))
-  if (resHis == 1) {
-      
-  }
 
 }
 
