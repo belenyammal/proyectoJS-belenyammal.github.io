@@ -53,8 +53,8 @@ class Pedido {
 
     mostrarPedido( ) {
         console.log('Los productos agregados al carrito fueron:')
-        carritoOrd = this.carrito.precio.sort( (a,b) => { a - b }) //no me funciona tira error
-        for ( const producto of this.carritoOrd) {
+        //carritoOrd = this.carrito.precio.sort( (a,b) => { a - b }) //no me funciona tira error
+        for ( const producto of this.carrito) {
             console.log(`nombre: ${producto.nombre}, precio: $${producto.precio}`)
         }
         let total = this.calcularTotal()
@@ -96,8 +96,10 @@ menu.addProducto(pizza)
 
 
 //inicio un pedido
-const pedido = new Pedido(1, [ ])
+let idPedido = parseInt(prompt("ingrese el numero de pedido"))
+idPedido = validarIsNro(idPedido)
 
+const pedido = new Pedido(idPedido, [ ])
 
 //ejecucion del programa principal
 let opc = -1;
@@ -114,14 +116,64 @@ function main() {
         pedido.addProducto(menu.productos[opc]); 
       }
     } 
-
   }
+
 
   if (pedido.carrito.length != 0) {
     pedido.mostrarPedido();
+
+    //DESARROLLO DE LOCAL STORAGE
+    if (localStorage.getItem("pedidos") != null) {
+    
+      //obtengo el array de pedidos del local storage
+      
+      let almacenados = JSON.parse(localStorage.getItem("pedidos"))
+      
+      //itero el array de pedidos y creo a cada objeto de tipo pedido para poder acceder a ellos
+      let pedidos = [ ]
+      for (const pedido of almacenados) {
+        pedidos.push(new Pedido(pedido.id, pedido.carrito))  
+      }
+      console.log(pedidos)
+  
+      //agrego al array el objeto pedido de esta sesion
+      pedidos.push(pedido)
+  
+      //guardo en el local el array con un pedido nuevo
+      pedidosJson = JSON.stringify(pedidos)
+      localStorage.setItem(`pedidos`, pedidosJson)
+  
+      
+      resHis = parseInt(prompt('quiere ver su historial de pedidos? \n Ingrese \n 1(si desea verlo)\n 2(cancelar)'))
+      if (resHis == 1) {
+        console.log("\n HISTORIAL DE PEDIDOS:")
+        for (const pedido of pedidos) {
+  
+            console.log(`\n pedido numero: ${pedido.id} \n`)
+  
+            pedido.mostrarPedido(pedido)
+        }
+      }
+     
+  
+    }else {
+        let pedidos = [ ]
+        pedidos.push(pedido)
+  
+        pedidosJson = JSON.stringify(pedidos)
+  
+        localStorage.setItem(`pedidos`, pedidosJson)
+  
+        
+    }    
+    
   } else {
     console.log("No se selecciono ningun producto");
   }
+
+   
+
+
 }
 
 main()
