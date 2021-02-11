@@ -125,9 +125,3 @@ function main() {
 }
 
 main()
-/*
-console.log(menu.productos[0])
-pedido.addProducto(menu.productos[0])
-pedido.addProducto(menu.productos[2])
-pedido.mostrarPedido()
-*/
