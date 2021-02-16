@@ -1,3 +1,5 @@
+
+
 function validarIsNro (nro){
     while (isNaN(nro) != false) {
         alert('el dato ingresado no es un numero vuelva a ingresar')
@@ -176,4 +178,6 @@ function main() {
 
 }
 
-main()
+
+
+

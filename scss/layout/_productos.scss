@@ -1,0 +1,87 @@
+@media only screen and (min-width:$phone){
+    
+    .productos__box {
+        display: grid;
+        grid-template: auto fill / auto ;
+
+        .producto {
+            background: #fff;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;    
+            height: 85px;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: 100px 1fr 50px;
+            width: 100%;
+            cursor: pointer;
+            margin-bottom: 13px;
+            overflow: hidden;
+        
+            .producto__img{
+                width: 100px;
+                height: 85px;
+        
+                img {
+                    width: inherit;
+                    height: inherit;
+                }
+            }
+            .producto__text {
+                display: flex;
+                flex-wrap: wrap;
+               padding: 12px;
+        
+                .producto__name {
+                    font-size: 16px;
+                    width: 100%;
+                    margin: 0%;
+                }
+        
+                .producto__price {
+                    font-size: 18px;
+                    color: $main;
+                    font-weight: bold;
+                    width: 100%;
+                    text-align: end;
+                    margin: 0%;
+                }
+        
+                
+            }
+                
+            .producto__icon {
+                background-color: #ffd082;
+                @include centrarHijos;
+        
+                img {
+                    @include sizes(18px, 18px)
+                }
+            }
+        }
+    }
+}
+@media only screen and (min-width:$tablet){
+
+    .productos {
+        .productos__box {
+            grid-template-columns: auto auto;
+    
+             .producto {
+                width: 300px;
+             }
+        }
+    }
+    
+}
+@media only screen and (min-width:$desktop){
+
+    .productos {
+        .productos__box {
+            grid-template-columns: auto auto auto;
+    
+             .producto {
+                width: 370px;
+             }
+        }
+    }
+}
+
