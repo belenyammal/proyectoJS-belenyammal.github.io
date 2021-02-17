@@ -4,12 +4,13 @@
         position: relative;
         top: -60px;
 
+
         .categorias__box {
 
             display: grid;
             grid-template: auto fill / auto;
             gap: 15px;
-            
+            cursor: pointer;
 
             .categorias__contenido {
                 @include sizes(100%, 110px);

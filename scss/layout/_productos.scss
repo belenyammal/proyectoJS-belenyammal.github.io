@@ -19,6 +19,7 @@
             .producto__img{
                 width: 100px;
                 height: 85px;
+                
         
                 img {
                     width: inherit;
@@ -49,7 +50,7 @@
             }
                 
             .producto__icon {
-                background-color: #ffd082;
+                background-color: $secundary;
                 @include centrarHijos;
         
                 img {
@@ -60,7 +61,7 @@
     }
 
     .botonVolver {
-        background-color: #ffd082;
+        background-color: $secundary;
         width: 180px;
         padding: 8px 5px;
         border-radius: 15px; 
