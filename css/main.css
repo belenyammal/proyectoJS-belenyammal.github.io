@@ -122,7 +122,18 @@ body {
         flex-wrap: wrap; }
         .productos__box .producto .producto__icon img {
           width: 18px;
-          height: 18px; } }
+          height: 18px; }
+  .botonVolver {
+    background-color: #ffd082;
+    width: 180px;
+    padding: 8px 5px;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Anton', sans-serif; }
+    .botonVolver .botonVolver__icon {
+      width: 25px;
+      margin-right: 15px; } }
 
 @media only screen and (min-width: 768px) {
   .productos .productos__box {

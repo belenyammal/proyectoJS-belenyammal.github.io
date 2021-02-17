@@ -58,6 +58,22 @@
             }
         }
     }
+
+    .botonVolver {
+        background-color: #ffd082;
+        width: 180px;
+        padding: 8px 5px;
+        border-radius: 15px; 
+        display: flex;
+        flex-wrap: wrap;
+        
+        font-family: 'Anton', sans-serif;
+        
+        .botonVolver__icon {
+            width: 25px;
+            margin-right: 15px;
+        }
+    }
 }
 @media only screen and (min-width:$tablet){
 
