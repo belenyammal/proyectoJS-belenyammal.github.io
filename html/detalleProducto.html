@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detalle</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="header">
+        <div class=" header__box box">
+            <a href="../index.html"><img  class="header__img " src="../imagenes/logomio2_negro.png" alt=""></a>
+        </div>
+        
+    </header>
+    <div class="encabezado ">
+        <div class="encabezado__box box">
+            <a href="productos.html"><img class="botonAtras" src="../imagenes/botonVolver__icon.svg" alt=""></a>
+            <h1 class="encabezado__title" id="encabezado__title">Detalle</h1>
+        </div>
+    </div>
+
+    <section class="detalle boxPadre borde">
+        <div class="detalle__box box" id="productos">
+            <div class="detalle__img" id="detalleImg">
+                <img src="../imagenes/productos/pizza.jpg" alt="">
+            </div>
+            <div class="detalle__descripcion" >
+                <p id="detalleDescripcion">detalleDescripcion</p>
+            </div>
+        </div>
+
+        <div class="detalle__footer box" >
+            <div class="detalle__cantidadBox" id="detalleCantidadBox">
+                <div class="detalle__boton" id="menos">
+                    <img src="../imagenes/menos.svg" alt="menos">
+                </div>
+                <p class="detalle__cantidad" id="detalleCantidad">1</p>
+                <div class="detalle__boton" id="mas">
+                    <img src="../imagenes/mas.svg" alt="mas">
+                </div>
+            </div>
+
+            <div class="detalle__agregar" id="detalleAgregar">
+                <p>Agregar</p>
+                <p id="detallePrecio">$300</p>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="../js/detalle.js"></script>
+</body>
+</html>

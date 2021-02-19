@@ -12,14 +12,23 @@
       align-items: initial;
       flex-wrap: wrap;
 
-      .encabezado__title {
-        font-family: 'Anton', sans-serif;
-        font-size: 22px;
-        color: white;
-        font-weight: 400;
+      .encabezado__box {
         display: flex;
-        align-items: initial;
-    }  
+        align-items: center;
+
+        .botonAtras {
+            width: 30px;
+            margin-right: 10px;
+        }
+        .encabezado__title {
+            font-family: 'Anton', sans-serif;
+            font-size: 22px;
+            color: white;
+            font-weight: 400;
+            width: 100px;
+            margin: 0;
+        }
+    } 
   }
 }
 @media only screen and (min-width:768px){}
