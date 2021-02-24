@@ -55,6 +55,7 @@ const menos = document.getElementById("menos")
 const mas = document.getElementById("mas")
 const cantidad = document.getElementById("detalleCantidad")
 
+const agregar = document.getElementById("detalleAgregar")
 
 //le pongo el valor correspondiente a cada elemento del html
 titulo.textContent = producto.nombre
@@ -79,4 +80,37 @@ mas.addEventListener("click", ()=>{
     detallePedido.aumentarCantidad()
     cantidad.textContent = detallePedido.cantidad
 })
+
+//desarrollo local storage, almaceno el detalle de pedido en el carrito
+//problema si toco dos veces agregar se agregan dos detalles iguales
+agregar.addEventListener("click", () => {
+    if (localStorage.getItem("carrito") != null) {
+    
+        //obtengo el array de carrito del local storage
+        
+        let almacenados = JSON.parse(localStorage.getItem("carrito"))
+        
+        //itero el array de carrito y creo a cada objeto de tipo detalle para poder acceder a ellos
+        let carrito = [ ]
+        for (const detalle of almacenados) {
+          carrito.push(new DetallePedido(detalle.producto, detalle.cantidad, detalle.subtotal))  
+        }
+        //agrego al array el objeto pedido de esta sesion
+        carrito.push(detallePedido)
+    
+        //guardo en el local el array con un pedido nuevo
+        carritoJson = JSON.stringify(carrito)
+        localStorage.setItem(`carrito`, carritoJson)
+    
+      }else {
+          let carrito = [ ]
+          carrito.push(detallePedido)
+    
+          carritoJson = JSON.stringify(carrito)
+    
+          localStorage.setItem(`carrito`, carritoJson)
+      }    
+})
+
+  
 
