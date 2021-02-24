@@ -39,7 +39,7 @@ class Producto {
 
 class Pedido {
     constructor  ( id, carrito ) {
-        this.id = id
+        this.id = id;
         this.carrito = carrito;
     }
 
