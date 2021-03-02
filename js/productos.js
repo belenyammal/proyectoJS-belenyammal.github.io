@@ -39,9 +39,6 @@ let titulo = document.getElementById("encabezado__title")
 
 titulo.textContent = categoria
 
-const fragment = document.createDocumentFragment()
-
-
 let filtrado = productos.filter( producto => producto.categoria == categoria)
 
 
