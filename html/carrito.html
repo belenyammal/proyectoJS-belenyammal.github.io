@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <title>Carrito</title>
 
     <link rel="stylesheet" href="../css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
@@ -21,20 +21,26 @@
     <div class="encabezado ">
         <div class="encabezado__box box">
             <a href="categorias.html"><img class="botonAtras" src="../imagenes/botonVolver__icon.svg" alt=""></a>
-            <h1 class="encabezado__title" id="encabezado__title"></h1>
+            <h1 class="encabezado__title" id="encabezado__title">Mi Orden</h1>
         </div>
     </div>
-   
- 
-        <div class="productos boxPadre borde">
-            <div class="productos__box box" id="productos">
-            
-            </div>
-        </div>
 
-        
-    
-    
-    <script src="../js/productos.js"></script>
+    <div class="productos boxPadre borde">
+        <div class="productos__box box" id="productos">
+            
+        </div>
+    </div>
+
+    <footer class="boxPadre">
+        <div class="pedido box">
+            <div class="pedido__total">
+                <p>Total:</p>
+                <p class="pedido__precioTotal" id="total"></p>
+            </div>
+            <p class="pedido__confirmar" id="pedidoConfirmar">Confirmar Pedido</p>
+        </div> 
+    </footer>
+
+    <script src="../js/carrito.js"></script>
 </body>
 </html>

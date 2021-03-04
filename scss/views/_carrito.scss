@@ -1,0 +1,42 @@
+@media only screen and (min-width:$phone){
+    
+    
+    footer {
+        position: sticky;
+        bottom: 0%;
+        background-color: white;
+        
+        .pedido {
+            padding: 12px;
+            &__total {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: $main;
+                font-weight: bolder;
+                margin: 0%;
+                font-size: 17px;
+    
+                p {
+                    margin: 0%;
+                    padding: 5px;
+                }
+                .pedido__precioTotal {
+                    font-size: 23px;
+                }
+            }
+    
+            &__confirmar {
+                color: white;
+                background-color: $main;
+                text-align: center;
+                font-weight: bolder;
+                padding: 12px;
+                margin: 0%;
+            }
+    
+        }
+    }
+}
+@media only screen and (min-width:$tablet){}
+@media only screen and (min-width:$desktop){}

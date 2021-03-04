@@ -101,6 +101,7 @@ agregar.addEventListener("click", () => {
         //guardo en el local el array con un pedido nuevo
         carritoJson = JSON.stringify(carrito)
         localStorage.setItem(`carrito`, carritoJson)
+        location.href="../html/categorias.html"
     
       }else {
           let carrito = [ ]
@@ -109,6 +110,8 @@ agregar.addEventListener("click", () => {
           carritoJson = JSON.stringify(carrito)
     
           localStorage.setItem(`carrito`, carritoJson)
+          location.href="../html/categorias.html"
+    
       }    
 })
 
