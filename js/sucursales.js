@@ -31,8 +31,10 @@ cuerpo.innerHTML = contenido
 
 cuerpo.addEventListener("click", (e) => {
 
-    if ( e.target.id != "cuerpo")
+    if ( e.target.id != "cuerpo") {
+        location.href="../html/categorias.html"
+    }
 
-    location.href="../html/categorias.html"
+    
 })
 
