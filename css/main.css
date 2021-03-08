@@ -151,6 +151,7 @@ body {
 
 @media only screen and (min-width: 768px) {
   .productos .productos__box {
+    height: auto;
     display: grid;
     grid-template-columns: auto auto; }
     .productos .productos__box .producto {
