@@ -54,8 +54,8 @@ for ( const detalle of almacenados){
     </div>`
 
 }
-
-productosDiv.innerHTML = contenido
+$("#productos").prepend(contenido);
+//productosDiv.innerHTML = contenido
 
 //inicializo un pedido 
 const pedido = new Pedido(almacenados)
@@ -76,13 +76,14 @@ function eliminar(array, id) {
 }
 
 //evento al click del tachito
+
 let idProd
 productosDiv.addEventListener("click", (e)=> {
     if (e.target.id == "productoEliminar") {
       idProd = e.target.parentNode.id
       eliminar(almacenados, idProd)
 
-      productosDiv.removeChild(e.target.parentNode)
+      
 
       //acuatualizo el total
       let total = pedido.total()
@@ -99,5 +100,14 @@ productosDiv.addEventListener("click", (e)=> {
 
     }
 
+
 })
 
+//no me sale q la animacion tambien funcione cuando toque el tachito
+$(".productos").click(function (e) { 
+  if (e.target.id == "productoEliminar") {
+      let idProd1 = e.target.parentNode.id
+      $(`#${idProd1}`).slideUp();
+  }
+
+});
