@@ -2,15 +2,17 @@ let productosDiv = document.getElementById("productos")
 let totalPrecio = document.getElementById("total")
 let almacenados
 
-//no se me cumple la condicion despues del ||
-if (localStorage.getItem("carrito") != null || (localStorage.getItem("carrito") !=  [ ])) {
+//?no se me cumple la condicion despues del ||, para q se aparezca q no hay productos seleccionados no solamente cuando 
+//entra pro primera vez a la web si no cuando haya seleccionado un producto y los elimine quedando el carrito vacio otra vez,
+//cosa q no pasa, no aparece el cartel
+if (localStorage.getItem("carrito") != null /*|| (localStorage.getItem("carrito") !=  [ ])*/) {
     
     //obtengo el array de carrito del local storage
     
     almacenados = JSON.parse(localStorage.getItem("carrito"))
 
   }else {
-      productosDiv.innerHTML = `<p>No hay productos en el carrito</p>`
+      productosDiv.innerHTML = `<div class="boxPadre"><p>No hay productos en el carrito</p></div>`
   }    
 
 class Pedido {
@@ -81,13 +83,21 @@ productosDiv.addEventListener("click", (e)=> {
       eliminar(almacenados, idProd)
 
       productosDiv.removeChild(e.target.parentNode)
+
+      //acuatualizo el total
+      let total = pedido.total()
+      totalPrecio.innerHTML = `$ ${total}`
     }
     else if (e.target.id == "eliminarIcon") {
       idProd = e.target.parentNode.parentNode.id
       eliminar(almacenados, idProd)
       productosDiv.removeChild(e.target.parentNode.parentNode)
 
+      //acuatualizo el total
+      let total = pedido.total()
+      totalPrecio.innerHTML = `$ ${total}`
+
     }
-    
+
 })
 

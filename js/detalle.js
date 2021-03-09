@@ -1,7 +1,6 @@
 let productoLocal = JSON.parse(localStorage.getItem('productoSeleccionado'))
 
 
-
 class Producto {
     constructor (objeto) {
         this.id = objeto.id;
@@ -25,6 +24,9 @@ class DetallePedido {
     aumentarSubtotal( ) {
         this.subtotal += producto.precio
     }
+    aumentarSubtotalSabido( nro ) {
+        this.subtotal += nro
+    }
     disminuirSubtotal( ) {
         if (this.subtotal > producto.precio){
             this.subtotal -= producto.precio
@@ -33,6 +35,9 @@ class DetallePedido {
 
     aumentarCantidad() {
         this.cantidad += 1
+    }
+    aumentarCantidadSabida(nro) {
+        this.cantidad += nro
     }
 
     disminuirCantidad() {
@@ -81,8 +86,7 @@ mas.addEventListener("click", ()=>{
     cantidad.textContent = detallePedido.cantidad
 })
 
-//desarrollo local storage, almaceno el detalle de pedido en el carrito
-//problema si toco dos veces agregar se agregan dos detalles iguales
+
 agregar.addEventListener("click", () => {
     if (localStorage.getItem("carrito") != null) {
     
@@ -95,25 +99,41 @@ agregar.addEventListener("click", () => {
         for (const detalle of almacenados) {
           carrito.push(new DetallePedido(detalle.producto, detalle.cantidad, detalle.subtotal))  
         }
+
         //agrego al array el objeto pedido de esta sesion
         carrito.push(detallePedido)
-    
+                
         //guardo en el local el array con un pedido nuevo
         carritoJson = JSON.stringify(carrito)
         localStorage.setItem(`carrito`, carritoJson)
         location.href="../html/categorias.html"
-    
-      }else {
-          let carrito = [ ]
-          carrito.push(detallePedido)
-    
-          carritoJson = JSON.stringify(carrito)
-    
-          localStorage.setItem(`carrito`, carritoJson)
-          location.href="../html/categorias.html"
-    
+        
+            
+        } else {
+            let carrito = [ ]
+            carrito.push(detallePedido)
+        
+            carritoJson = JSON.stringify(carrito)
+        
+            localStorage.setItem(`carrito`, carritoJson)
+            location.href="../html/categorias.html"
+        
       }    
 })
 
   
 
+/*
+
+
+           //verifico si hay un producto igual a este en al carrito para agregarle los datos del mismo al detalle
+            if ( detalle.producto.id == detallePedido.producto.id) {
+                detalle.aumentarCantidadSabida(detalle.producto.cantidad)
+                detalle.aumentarSubtotalSabido(detalle.producto.subtotal)
+                carritoJson = JSON.stringify(carrito)
+                localStorage.setItem(`carrito`, carritoJson)
+                location.href="../html/categorias.html"
+
+            }else {
+                
+*/

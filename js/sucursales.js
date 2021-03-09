@@ -1,13 +1,3 @@
-const sucursales = [
-    { id:1, nombre: "Nueva Cordoba", direccion: "Solo delivery", imagen: "../imagenes/sucursales__img.png"},
-    { id:2, nombre: "Nueva Cordoba", direccion: "Solo delivery", imagen: "../imagenes/sucursales__img.png"},
-    { id:3, nombre: "Nueva Cordoba", direccion: "Solo delivery", imagen: "../imagenes/sucursales__img.png"},
-    { id:4, nombre: "Nueva Cordoba", direccion: "Solo delivery", imagen: "../imagenes/sucursales__img.png"},
-    { id:5, nombre: "Nueva Cordoba", direccion: "Solo delivery", imagen: "../imagenes/sucursales__img.png"},
-    { id:6, nombre: "Nueva Cordoba", direccion: "Solo delivery", imagen: "../imagenes/sucursales__img.png"},
-    { id:7, nombre: "Nueva Cordoba", direccion: "Solo delivery", imagen: "../imagenes/sucursales__img.png"},
-    { id:8, nombre: "Nueva Cordoba", direccion: "Solo delivery", imagen: "../imagenes/sucursales__img.png"}
-]
 
 const cuerpo = document.getElementById("cuerpo")
 let contenido = ''
