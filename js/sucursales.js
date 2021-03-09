@@ -17,14 +17,17 @@ for ( const sucursal of sucursales) {
     </div>`
 }
 
-cuerpo.innerHTML = contenido
 
-cuerpo.addEventListener("click", (e) => {
+$("#cuerpo").append(contenido);
 
-    if ( e.target.id != "cuerpo") {
-        location.href="../html/categorias.html"
-    }
 
+$("#cuerpo").click(function (e) { 
     
-})
+    if ( e.target.id != "cuerpo") {
+        $("#cuerpo").slideUp("slow", () => {
+            location.href="../html/categorias.html"
+        });
+        
+    }
+  });
 
