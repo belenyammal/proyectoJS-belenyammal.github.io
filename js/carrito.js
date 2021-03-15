@@ -71,7 +71,7 @@ function eliminar(array, id) {
           array.splice(posicion, 1)
           localStorage.setItem( "carrito", JSON.stringify(array))
         }
-
+ 
     }
 }
 
@@ -82,8 +82,6 @@ productosDiv.addEventListener("click", (e)=> {
     if (e.target.id == "productoEliminar") {
       idProd = e.target.parentNode.id
       eliminar(almacenados, idProd)
-
-      
 
       //acuatualizo el total
       let total = pedido.total()
