@@ -1,5 +1,6 @@
 let productosDiv = document.getElementById("productos")
 let totalPrecio = document.getElementById("total")
+let boton = document.getElementById("pedidoConfirmar")
 let almacenados
 
 //?no se me cumple la condicion despues del ||, para q se aparezca q no hay productos seleccionados no solamente cuando 
@@ -109,3 +110,24 @@ $(".productos").click(function (e) {
   }
 
 });
+
+
+//practica de obtener datos de una api
+boton.addEventListener('click', () => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+        //if (res.ok == true) es lo mismo
+        .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
+        //el res.ok del dom tiene un valor true o false
+        .then(res => res.json()) //para transormar res en un objeto y descapsularlo
+        .then(res => {
+            const list = document.getElementById('list')
+            const fragment = document.createDocumentFragment()
+            for(const userInfo of res){
+                const listItem = document.createElement('LI')
+                listItem.textContent = `${userInfo.id} - ${userInfo.name}`
+                fragment.appendChild(listItem)
+            }
+            list.appendChild(fragment)
+        })
+
+})
