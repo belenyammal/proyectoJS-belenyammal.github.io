@@ -4,16 +4,15 @@ let boton = document.getElementById("pedidoConfirmar")
 let almacenados
 
 //?no se me cumple la condicion despues del ||, para q se aparezca q no hay productos seleccionados no solamente cuando 
-//entra pro primera vez a la web si no cuando haya seleccionado un producto y los elimine quedando el carrito vacio otra vez,
+//entra por primera vez a la web si no cuando haya seleccionado un producto y los elimine quedando el carrito vacio otra vez,
 //cosa q no pasa, no aparece el cartel
-if (localStorage.getItem("carrito") != null /*|| (localStorage.getItem("carrito") !=  [ ])*/) {
-    
-    //obtengo el array de carrito del local storage
-    
-    almacenados = JSON.parse(localStorage.getItem("carrito"))
+if (localStorage.getItem("carrito") == null || (localStorage.getItem("carrito") ==  [])) {
+  productosDiv.innerHTML = `<div class="boxPadre vacio" id="vacio"><p>No hay productos en el carrito</p></div>`
 
   }else {
-      productosDiv.innerHTML = `<div class="boxPadre"><p>No hay productos en el carrito</p></div>`
+      //obtengo el array de carrito del local storage
+    
+    almacenados = JSON.parse(localStorage.getItem("carrito"))
   }    
 
 class Pedido {
@@ -101,7 +100,7 @@ productosDiv.addEventListener("click", (e)=> {
 
 
 })
-
+//animacion sobre el nachito
 //no me sale q la animacion tambien funcione cuando toque el tachito
 $(".productos").click(function (e) { 
   if (e.target.id == "productoEliminar") {

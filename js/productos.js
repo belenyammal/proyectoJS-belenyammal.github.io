@@ -51,8 +51,6 @@ productosDiv.addEventListener("click", (e)=> {
         localStorage.setItem('productoSeleccionado', JSON.stringify(buscado[0]))
         location.href="../html/detalleProducto.html"
     }
-    
-
 })
 
 //forma de obtener los datos de los productos de un array de objetos local

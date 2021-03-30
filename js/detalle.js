@@ -89,21 +89,36 @@ mas.addEventListener("click", ()=>{
 
 agregar.addEventListener("click", () => {
     if (localStorage.getItem("carrito") != null) {
-    
+        
         //obtengo el array de carrito del local storage
         
         let almacenados = JSON.parse(localStorage.getItem("carrito"))
         
         //itero el array de carrito y creo a cada objeto de tipo detalle para poder acceder a ellos
         let carrito = [ ]
+        let ban = false
         for (const detalle of almacenados) {
-          carrito.push(new DetallePedido(detalle.producto, detalle.cantidad, detalle.subtotal))  
-        }
 
-        //agrego al array el objeto pedido de esta sesion
-        carrito.push(detallePedido)
+          //verifico si no hay ya un producto igual agregado
+          if ( detalle.producto.id == detallePedido.producto.id) {
+              detalleigual =  new DetallePedido(detalle.producto, detalle.cantidad, detalle.subtotal)
+              detalleigual.aumentarCantidadSabida(detallePedido.cantidad)
+              detalleigual.aumentarSubtotalSabido(detallePedido.subtotal)
+            
+              carrito.push(detalleigual) 
+              ban = true
+          }else {
+              //si el el detalle no es agual se crea un objeto de tipo detalle directamente
+              carrito.push(new DetallePedido(detalle.producto, detalle.cantidad, detalle.subtotal))  
+            }
+        }
+        //agrego al array el objeto detalle de esta sesion si no se encontro ninguno igual
+        if (ban == false) {
+            carrito.push(detallePedido)
+        }
+       
                 
-        //guardo en el local el array con un pedido nuevo
+        //guardo en el local el array con un detalle nuevo
         carritoJson = JSON.stringify(carrito)
         localStorage.setItem(`carrito`, carritoJson)
         location.href="../html/categorias.html"
@@ -123,17 +138,5 @@ agregar.addEventListener("click", () => {
 
   
 
-/*
 
-
-           //verifico si hay un producto igual a este en al carrito para agregarle los datos del mismo al detalle
-            if ( detalle.producto.id == detallePedido.producto.id) {
-                detalle.aumentarCantidadSabida(detalle.producto.cantidad)
-                detalle.aumentarSubtotalSabido(detalle.producto.subtotal)
-                carritoJson = JSON.stringify(carrito)
-                localStorage.setItem(`carrito`, carritoJson)
-                location.href="../html/categorias.html"
-
-            }else {
-                
-*/
+     

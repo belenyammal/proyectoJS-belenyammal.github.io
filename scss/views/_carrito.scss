@@ -1,5 +1,19 @@
 @media only screen and (min-width:$phone){
-    
+    .productos {
+
+        .productos__box {
+
+            .vacio {
+                color: white;
+                p {
+                    text-align: center;
+                }
+            }
+        }
+
+        
+        
+    }
     
     footer {
         position: sticky;
